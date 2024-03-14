@@ -1,0 +1,50 @@
+@use '../abstracts';
+
+html {
+
+    // header
+    --body-color: #f6f6f6;
+    --text-color: #1a162e;
+    --icon-filter: brightness(0) saturate(100%) invert(8%) sepia(14%) saturate(2797%) hue-rotate(211deg) brightness(90%)
+        contrast(96%);
+
+    --header-bg-color: #eee;
+    @include abstracts.screen(md) {
+        --header-bg-color: #fff;
+    }
+
+    --top-act-group-bg-color: #fff;
+    --header-and-top-act-group-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
+    --top-act-group-separate-color: #ededf6;
+
+    // drop-down
+    --drop-down-bg-color: #fff;
+    --drop-down-shadow-color: rgba(200, 200, 200, 0.4);
+    --top-menu-border-color: #d2d1d6;
+    --menu-column-icon-2-filter: brightness(0) saturate(100%) invert(9%) sepia(21%) saturate(1532%) hue-rotate(210deg)
+        brightness(92%) contrast(98%);
+    --scrollbar-color: rgba(119, 218, 230, 0.5);
+    --navbar-menu-bg-color: #fff;
+    --navbar-menu-shadow-color: rgba(200, 200, 200, 0.4);
+
+    // cate-item
+    --cate-item-bg-color: #eee;
+
+    @include abstracts.screen(md) {
+        --cate-item-bg-color: #fff;
+    }
+    --cate-item-thumb-bg-color: #fff;
+    --cate-item-price-color: #000;
+
+    // - filter button
+    --filter-btn-bg-color: #fff;
+    --filter-btn-color: #6c6c72;
+
+    // like button
+    --like-btn-bg-color: #fff;
+
+    // product card
+    --product-card-bg-color: #fff;
+    --product-card-shadow-color: rgba(237, 237, 246, 0.2);
+
+}

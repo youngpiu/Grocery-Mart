@@ -1,0 +1,259 @@
+@use '../abstracts';
+
+%flexItemCenter {
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    padding: 30px 0;
+    background: var(--header-bg-color);
+    box-shadow: var(--header-and-top-act-group-shadow);
+
+    @include abstracts.screen(lg) {
+        padding: 20px 0;
+    }
+
+    @include abstracts.screen(sm) {
+        padding: 16px 0;
+    }
+}
+
+.top-bar {
+    @extend %flexItemCenter;
+    position: relative;
+    z-index: 1;
+    @include abstracts.screen(md) {
+        justify-content: space-between;
+    }
+
+    &__more {
+        @include abstracts.screen(lg) {
+            margin-right: 60px;
+        }
+
+        @include abstracts.screen(md) {
+            margin: 0;
+        }
+
+        &-icon {
+            @include abstracts.screen(lg) {
+                width: 18px;
+            }
+
+            @include abstracts.screen(sm) {
+                width: auto;
+            }
+        }
+    }
+}
+
+.navbar {
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-color);
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    margin-left: 129px;
+    @include abstracts.screen(xl) {
+        margin-left: 40px;
+    }
+
+    @include abstracts.screen(lg) {
+        position: fixed;
+        z-index: 9;
+        inset: 0 50% 0 0;
+        translate: -150%;
+        padding: 30px;
+        margin-left: 0;
+        background: var(--navbar-menu-bg-color);
+        transition: translate 0.5s;
+        border-radius: 0px 20px 20px 0px;
+        box-shadow: 0px 40px 90px 20px var(--navbar-menu-shadow-color);
+        &.show {
+            translate: 0;
+        }
+
+        &.show ~ &__overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    @include abstracts.screen(sm) {
+        inset: 0 20% 0 0;
+    }
+
+    @include abstracts.screen(md) {
+        padding: 20px;
+    }
+
+    &__close {
+        @include abstracts.screen(lg) {
+            width: 100%;
+            padding: 0 0 10px 0;
+        }
+    }
+
+    &__overlay {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.2s, visibility 0.2s;
+
+        @include abstracts.screen(lg) {
+            position: fixed;
+            inset: 0;
+            z-index: 8;
+            background: rgba($color: #000, $alpha: 0.5);
+        }
+    }
+
+    &__list {
+        display: flex;
+        @include abstracts.screen(lg) {
+            flex-direction: column;
+            height: calc(100% - 28px);
+            overflow-y: auto;
+            overscroll-behavior: contain;
+        }
+
+        @include abstracts.screen(md) {
+            height: calc(100% - 125px);
+        }
+    }
+
+    &__item {
+        &:hover .drop-down {
+            display: block;
+        }
+
+        @include abstracts.screen(lg) {
+            width: 100%;
+
+            &:hover .drop-down {
+                display: none;
+            }
+
+            &--active .drop-down {
+                display: block !important;
+            }
+        }
+    }
+
+    &__link {
+        @extend %flexItemCenter;
+        height: 50px;
+        padding: 0 15px;
+        column-gap: 6px;
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 146.667%;
+
+        @include abstracts.screen(lg) {
+            justify-content: space-between;
+            padding: 10px 0 13px;
+        }
+    }
+
+    &__arrow {
+        margin-top: 4px;
+
+        @include abstracts.screen(lg) {
+            margin: 0;
+            rotate: -90deg;
+            transition: rotate -90deg;
+        }
+    }
+
+    &__item--active &__arrow {
+        rotate: 0deg;
+    }
+}
+
+.top-act {
+    @extend %flexItemCenter;
+    column-gap: 20px;
+    margin-left: auto;
+
+    @include abstracts.screen(xl) {
+        column-gap: 8px;
+    }
+
+    @include abstracts.screen(md) {
+        margin: 0;
+    }
+
+    &__group {
+        @extend %flexItemCenter;
+        gap: 20px;
+        min-width: 50px;
+        height: 50px;
+        padding: 10px 20px;
+        border-radius: 8px;
+        background: var(--top-act-group-bg-color);
+        box-shadow: 0px 20px 60px 10px var(--header-and-top-act-group-shadow);
+
+        @include abstracts.screen(xl) {
+            gap: 10px;
+        }
+
+        &--single {
+            padding: 13px;
+        }
+    }
+
+    &__btn {
+        @extend %flexItemCenter;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+    &__title {
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 146.667%;
+    }
+
+    &__separate {
+        width: 1px;
+        height: 30px;
+        background: var(--top-act-group-separate-color);
+    }
+
+    &__user {
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 14px 2px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+    }
+
+    &__avatar {
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.navbar-btn {
+    padding: 10px 0;
+
+    &__title,
+    &__value {
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 146.667%;
+    }
+
+    &__title {
+        margin: 0 auto 0 16px;
+    }
+}

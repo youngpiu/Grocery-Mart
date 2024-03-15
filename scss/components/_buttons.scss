@@ -31,3 +31,16 @@
     background: var(--like-btn-bg-color);
     box-shadow: 0px 20px 60px rgba(124, 124, 124, 0.2);
 }
+
+.like-btn__icon--liked {
+    display: none;
+}
+
+.product-card__like-btn--liked .like-btn__icon {
+    display: none;
+}
+
+.product-card__like-btn--liked .like-btn__icon--liked {
+    display: block;
+    margin-top: 8px;
+}
